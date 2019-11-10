@@ -4,7 +4,7 @@
     <title>
         Pet Info
     </title>
-    
+    <%- include partials/links.ejs %>
     <style>
     #nbar,#sub{
         background-color: #ee894e;
@@ -47,11 +47,24 @@
         margin-left: 2%;
         margin-right: 2%;
     }
-    #akab{
+    #akab{  
         display: inline-block;
         margin-top: 4%;
         margin-right:2%;
     }
+                footer {
+                background-color:#ee894e;
+                background:linear-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0.9));
+                margin-top:4%;
+                color: #838383;
+            }
+            footer a{
+                color: #838383;
+            }
+            footer a:hover{
+                text-decoration: none;
+                color: orange;
+            }
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
@@ -61,27 +74,14 @@
 
 <body>
     
-    <nav class="navbar navbar-expand-sm justify-content-end fixed-top" id="nbar">
-	    <a class="navbar-brand" href="#">Pet.find</a>
-	    <a class="nav-item nav-link" href="#">About us</a>
-	    <div class="collapse navbar-collapse flex-grow-0 ml-auto mr-1 justify-content-end" id="navbarSupportedContent">
-	        <ul class="navbar-nav text-right">
-	            <li class="nav-item active">
-	                <a class="nav-link" href="#">Login</a>
-	            </li>
-	            <li class="nav-item active">
-	                <a class="nav-link" href="#">Sign up</a>
-	            </li>
-	        </ul>
-	    </div>
-	</nav>
+<%- include partials/navbar.ejs %>
     <br>
     <br>
     <br>
     <div id="dog" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="dog.jpg" class="d-block w-100" alt="..." id="dog">
+          <img src="images/<%= info[0].name %>.jpg" class="d-block w-100" alt="..." id="dog">
         </div>
         <div class="carousel-item">
           <img src="dog.jpg" class="d-block w-100" alt="...">
@@ -104,7 +104,7 @@
           <div class="row no-gutters">
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Bruno</h5>
+                <h5 class="card-title"><%= info[0].name %></h5>
                 <p class="card-text">
                     <span>Breed: <%= info[0].breed %></span><br/>
                     <span>Gender: <%= info[0].gender %></span><br/>
@@ -128,12 +128,13 @@
         </div>
         <div class="card text-center" style="width: 13rem;" id="akab">
           <div class="card-body" >
-            <a href="#" class="btn btn-primary">Ask about Bruno</a>
+            <a href="<%= info[0].animal %>/<%= info[0].pid %>/inquire" class="btn btn-primary">Ask about <%= info[0].name %></a>
             <hr>
-            <a href="#" class="btn btn-primary">Sponsor Bruno</a>
+            <a href="#" class="btn btn-primary">Sponsor <%= info[0].name %></a>
           </div>
         </div>
     </div>
 </body>
-</body>
+<%- include partials/footer.ejs %>
+
 </html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+    <head><!DOCTYPE html>
+    <head>
+        <title>Pet.find</title>
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <!--  <link rel="stylesheet" href="main.css"> -->
+        <style>
+            @keyframes fade{
+                0%{
+                    opacity:0;
+                }
+                100%{opacity: 1;}
+            }
+            #nbar,#sub{
+                background-color: #ee894e;
+            }
+            #sub{
+                border:1px solid #ee894e;
+            }
+            .nav-link,.navbar-brand{
+                color: white;
+            }
+            nav a:hover{
+                color:#8d3708;
+            }
+            #login{
+                float:right;
+            }
+            body {
+                background:linear-gradient(rgba(255, 255, 255, 0.7), rgba(255,255,255,0.7)), url("main_img.jpg") no-repeat;
+                background-size: cover;
+            }
+            .main {
+                position:relative;
+                text-align:center;
+                animation: fade;
+                animation-duration: 1.7s;
+                -webkit-animation-fill-mode: forwards;
+            }
+            @keyframes fade{
+                0%{
+                    opacity:0;
+                }
+                100%{opacity: 1;}
+            }
+            .main_text {
+                color:#db590d;
+                position:absolute;
+                top:110px;
+                left:760px;
+                font-size:40px;
+                transform: translate(-50%, -50%);
+                font-family: 'Righteous',cursive;
+                animation: fade;
+                animation-duration: 1.2s;
+                -webkit-animation-fill-mode: forwards;
+            }
+            img{
+                width:90px;
+                height:180px;
+            }
+            .links1 #first{
+                margin-left: 17%;
+            }
+            .links2 #first{
+                margin-left: 17%;
+            }
+            .links1 a{
+                position: relative;
+                margin-top: 15%;
+                margin-left: 4%;
+                float:left;
+            }
+            .links2 a{
+                position: relative;
+                margin-top: 3%;
+                margin-left: 4%;
+                float:left;
+            }
+            .card-body{
+                background-color:#ee894e; 
+            }
+            .card-body h5{
+                color:white;
+            }
+            a:hover .card-body{
+                background-color:#db590d;
+                color: white;
+            }
+            @keyframes scale{
+                100% {transform: scale(1.1);
+                }
+            }
+            .links1 a:hover,.links2 a:hover{
+                color: white;
+                text-decoration: none;
+                animation: scale;
+                animation-duration: 0.3s;
+                -webkit-animation-fill-mode: forwards;
+            }
+           </style>
+           <script>
+               $(document).ready(function(){
+                    $("#nbar").hide();
+                    $("#nbar").slideDown();
+                    $(".links1 a").slideDown();
+               });
+           </script>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm justify-content-end fixed-top" id="nbar">
+            <a class="navbar-brand" href="#">Pet.find <i class="fa fa-paw"></i></a>
+
+            <a class="nav-item nav-link" href="#">About us</a>
+            <div class="collapse navbar-collapse flex-grow-0 ml-auto mr-1" id="navbarSupportedContent">
+                <ul class="navbar-nav text-right">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/signup">Sign up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="main">
+            <div id="img"></div>
+            <div class="main_text">
+                Find your purrfect match!
+            </div>
+            <div class="links1">
+            <a href="/Dog" id="first">
+                <div class="card" style="width: 18rem;">
+                <img src="dog.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Adopt a Dog</h5>
+                </div>
+                </div>
+            </a>
+            <a href="/Cat" class="">
+                    <div class="card" style="width: 18rem;">
+                    <img src="public/cat.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Adopt a Cat</h5>
+                    </div>
+                    </div>
+            </a>
+            <a href="/Hamster" class="">
+                    <div class="card" style="width: 18rem;">
+                    <img src="hamster.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Adopt a Hamster</h5>
+                    </div>
+                    </div>
+            </a>
+            </div>
+            <div class="links2">
+                <a href="/Rabbit" id="first">
+                    <div class="card" style="width: 18rem;">
+                    <img src="bunny.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Adopt a Rabbit</h5>
+                    </div>
+                  </div>
+                </a>
+                <a href="/guinea-pig" class="">
+                        <div class="card" style="width: 18rem;">
+                        <img src="guinea-pig.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Adopt a Guinea Pig</h5>
+                        </div>
+                      </div>
+                </a>
+                <a href="other" class="" style="margin-top:9%">
+                        <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Find other pets</h5>
+                        </div>
+                      </div>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
+      

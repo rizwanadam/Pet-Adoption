@@ -4,12 +4,13 @@
 	<title>
 		Pet Info
 	</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-	var img = document.getElementById('dog');
-    img.setAttribute('src','dog.jpg');
-</script>
+		<%- include partials/links.ejs %>
 	<style>
+		.card{
+			display: inline-flex;
+			margin-left: 3%;
+			margin-top: 1%;
+		}
 		#nbar,#sub{
 			background-color: #ee894e;
 		}
@@ -20,7 +21,7 @@
 			color: white;
 		}
 		body{
-			background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url("dog.jpg") no-repeat;
+			background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url("main_img.jpg") no-repeat;
   			background-size: cover;
 		}
 		.card-deck{
@@ -35,7 +36,7 @@
 			background-color: rgba(1,0,0,1);
 		}
 		form{
-			margin-left: 2%;
+			margin-left: 1.5%;
 			margin-top:100px;
 		}
 		#fom{
@@ -48,42 +49,54 @@
 			margin-left: 1.5%
 		}
 		#find{
-			display: inline-flex;
-			width: 15%;
+			display: inline-block;
+			width: 60px;
 			background-color: #ee894e;
 			border-color: #ee894e;
 		}
-	</style>
+		.card-body{
+			height: 5%;
+		}
+		img{
+			height: 300px;
+		}
+            footer {
+                background-color:#ee894e;
+                background:linear-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0.9));
+                margin-top:4%;
+                color: #838383;
+            }
+            footer a{
+                color: #838383;
+            }
+            footer a:hover{
+                text-decoration: none;
+                color: orange;
+            }
 
+	</style>
+	           <script>
+               $(document).ready(function(){
+                    $("#nbar").hide();
+                    $("#nbar").slideDown(600);
+               });
+           </script>
 </head>
 <header>
-		<nav class="navbar navbar-expand-sm justify-content-end fixed-top" id="nbar">
-	    <a class="navbar-brand" href="#">Pet.find</a>
-	    <a class="nav-item nav-link" href="#">About us</a>
-	    <div class="collapse navbar-collapse flex-grow-0 ml-auto mr-1" id="navbarSupportedContent">
-	        <ul class="navbar-nav text-right">
-	            <li class="nav-item active">
-	                <a class="nav-link" href="#">Login</a>
-	            </li>
-	            <li class="nav-item active">
-	                <a class="nav-link" href="#">Sign up</a>
-	            </li>
-	        </ul>
-	    </div>
-	</nav>
+		<%- include partials/navbar.ejs %>
 </header>
 <body>
-	<form>
+	<form action="/breed" method="POST">
 	  <div class="form-group">
-	    <select class="form-control" id="exampleFormControlSelect1">
+	    <select class="form-control" name="Breed">
 	      <option selected>Breed</option>
-	      <% for(var i=0;i< pet.length;i++) { %>
-	      <option><%= pet[i].breed %></option>
+	      <% for(var i=0;i< breed.length;i++) { %>
+	      <option value="<%= breed[i].breed %>"><%= breed[i].breed %></option>
 	      <% } %>
 	    </select>
 	  </div>
 	  <div class="form-group">
-	    <select class="form-control" id="exampleFormControlSelect1">
+	    <select class="form-control" id="Location">
 	      <option selected="">Location</option>
 	      <option>2</option>
 	      <option>3</option>
@@ -92,43 +105,22 @@
 	    </select>
 	  </div>
 	  <div class="form-group" id="btn">
-	  	<a href="#" class="btn btn-primary" id="find">Find</a>
+	  	<button href="#" class="btn btn-primary" id="find">Find</button>
 	  </div>
 	</form>
 	
-	<div class="card-deck">
 	<% for(var i=0;i< pet.length;i++) { %>
-	  <div class="card">
-	    <img src="" class="card-img-top" alt="...">
+	  <div class="card" style="width:25rem;height: 30rem">
+	    <img src="images/<%= pet[i].name %>.jpg" class="card-img-top" alt="...">
 	    <div class="card-body">
 	      <h5 class="card-title"><%= pet[i].breed %></h5>
-	      <p class="card-text">Name : <%= pet[i].name %><br>Age : <%= pet[i].age %> years<br></p>
+	      <p class="card-text">Name : <%= pet[i].name %><br>Age : <%= pet[i].age %> months<br></p>
 	    </div>
 	    <div class="card-footer">
 	      <a href="<%= pet[i].animal %>/<%= pet[i].pid %>" class="btn btn-primary" id="fom" >Find out more</a>
 	    </div>
 	  </div>
 	  <% } %>
-	  <!-- <div class="card"> 
-	    <img src="dog.jpg" class="card-img-top" alt="...">
-	    <div class="card-body">
-	      <h5 class="card-title">Card title</h5>
-	      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-	    </div>
-	    <div class="card-footer">
-	      <a href="#" class="btn btn-primary" id="fom">Find out more</a>
-	    </div>
-	  </div>
-	  <div class="card">
-	    <img src="dog.jpg" class="card-img-top" alt="...">
-	    <div class="card-body">
-	      <h5 class="card-title">Card title</h5>
-	      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-	    </div>
-	    <div class="card-footer">
-	      <a href="#" class="btn btn-primary" id="fom">Find out more</a>
-	    </div>
-  	   </div>-->
-	</div>
 </body>
+<%- include partials/footer.ejs %>
 </html>
