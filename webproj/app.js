@@ -4,6 +4,7 @@ var app = express();
 var ejs = require('ejs');
 app.set('view engine', 'ejs');
 var mysql = require('mysql');
+// var popup = require('popups');
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
    extended: true
@@ -15,7 +16,7 @@ var connection = mysql.createConnection({
   password: 'password',
   database: 'petadoption'
 });
-
+var sessinfo;
 var path = require('path');
 connection.connect();
 //connection.query('INSERT INTO ')
@@ -47,6 +48,9 @@ app.post('/logged',function(req,res)
 		sess = req.session;
 		sess.email = req.body.email;
 		sess.password = req.body.pass;
+		console.log(sess.email);
+		console.log(sess.password);
+		res.send(sess.email);
 });
 app.get('/login',function(req,res){
 	res.render("login.ejs");
@@ -54,6 +58,16 @@ app.get('/login',function(req,res){
 app.get('/signup',function(req,res){
 	res.render('signup.ejs');
 });
+app.get('/apply',function(req,res){
+	if(sess.email===undefined){
+		var al = "<script>alert('Not logged in');</script>";
+		res.render('cominfo.ejs',{'info':sessinfo.in,'message':al});
+	}
+	else{
+		res.render('cominfo.ejs',{'info':sessinfo.in});
+	}
+});
+
 var sess;
 function findAID(req,res,next){
 	sess = req.session;
@@ -76,7 +90,6 @@ function breed(req,res,next){
     });
 }
 function breed1(req,res,next){
-	console.log(sess.aid);
 	connection.query('SELECT distinct(breed) from pets WHERE aid =?',[sess.aid], function (err, result, fields) {
 	if(err) throw err;
 	req.breed = result;
@@ -89,7 +102,7 @@ function info(req,res,next){
 	connection.query('select name,animal,age,breed,pid from animals a,pets p where a.aid=p.aid and p.aid=?',[req.aid], function (err, result, fields) {
 	if (err) throw err; 
 	req.info = result;
-	console.log(result);
+
 	return next();
 	});
 }
@@ -98,7 +111,6 @@ function getBreed(req,res,next){
 	connection.query('select name,animal,age,breed,pid from animals a,pets p where a.aid=p.aid and p.aid=? and breed=?',[sess.aid,req.body.Breed], function (err, result, fields) {
 	if (err) throw err; 
 	req.info = result;
-	console.log(result);
 	return next();
 	});
 }
@@ -110,6 +122,7 @@ app.post('/breed',getBreed,breed1,function(req,res){
   	}
 });
 app.get('/:animal',findAID,breed,info,function(req,res){
+	console.log(sess.email);
 	if ((/\.(gif|jpg|jpeg|tiff|png)$/i).test(req.originalUrl)) {
     res.status(204).json({nope: true});
   	}else{ 
@@ -118,19 +131,19 @@ app.get('/:animal',findAID,breed,info,function(req,res){
 });
 
 app.get('/:animal/:id',function(req,res) {
-
-	if ((/\.(gif|jpg|jpeg|tiff|png)$/i).test(req.originalUrl)) {
-    res.status(204).json({nope: true});
-  	} else {
+	sessinfo = req.session;
+	sessinfo.in;
+	// if ((/\.(gif|jpg|jpeg|tiff|png)$/i).test(req.originalUrl)) {
+ //    res.status(204).json({nope: true});
+ //  	} else {
 		var pid = req.params.id;
-		console.log(req.params);
 		connection.query('SELECT breed,age,name,gender,vaccinated,temperament,pid,animal from pets p,animals a where p.aid=a.aid and p.PID=?',[pid], function (err, result, fields) {
 	 	if (err) throw err;
-	 	console.log(result);
+	 	sessinfo.in = result;
 	 	res.render('cominfo.ejs',{'info':result});
 	 	
   	});
-	}
+	// }
 });
 app.get('/:animal1/:animal/:id/inquire$',function(req,res){
 	console.log(req.params);

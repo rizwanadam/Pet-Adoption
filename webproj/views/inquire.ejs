@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>Ask about</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <%- include partials/links.ejs %>
   <style>
     #nbar,#sub{
       background-color: #ee894e;
@@ -23,24 +22,24 @@
       background-color: #ee894e;
       border-color:  #ee894e;
     }
+                footer {
+                background-color:#ee894e;
+                background:linear-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0.9));
+                margin-top:4%;
+                color: #838383;
+            }
+            footer a{
+                color: #838383;
+            }
+            footer a:hover{
+                text-decoration: none;
+                color: orange;
+            }
   </style>
 
 </head>
 <header>
-    <nav class="navbar navbar-expand-sm justify-content-end fixed-top" id="nbar">
-      <a class="navbar-brand" href="#">Pet.find</a>
-      <a class="nav-item nav-link" href="#">About us</a>
-      <div class="collapse navbar-collapse flex-grow-0 ml-auto mr-1 justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav text-right">
-              <li class="nav-item active">
-                  <a class="nav-link" href="#">Login</a>
-              </li>
-              <li class="nav-item active">
-                  <a class="nav-link" href="#">Sign up</a>
-              </li>
-          </ul>
-      </div>
-  </nav>
+      <%- include partials/navbar.ejs %>
 </header>
 <body>
 <form class="needs-validation" id="info" novalidate>
@@ -108,7 +107,7 @@
   </div>
 
   <div class="form-group">
-  <label for="comment">Ask about <%= name %>:</label>
+  <label for="comment">Ask about <%= name[0].name %>:</label>
   <textarea class="form-control" rows="5" id="comment"></textarea>
   <button class="btn btn-primary" type="submit" id="ask">Submit form</button>
 </div>
@@ -136,4 +135,5 @@
 </script>
 
 </body>
+  <%- include partials/footer.ejs %>
 </html>

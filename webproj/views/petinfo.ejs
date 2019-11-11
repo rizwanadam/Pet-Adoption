@@ -8,8 +8,9 @@
 	<style>
 		.card{
 			display: inline-flex;
-			margin-left: 3%;
-			margin-top: 1%;
+			margin-left: 6.5%;
+			margin-top: 2%;
+			color: black;
 		}
 		#nbar,#sub{
 			background-color: #ee894e;
@@ -24,19 +25,16 @@
 			background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url("main_img.jpg") no-repeat;
   			background-size: cover;
 		}
-		.card-deck{
-			margin-left: 0.9%;
-			margin-right:0.9%;
-			margin-top: 20px;
-		}
+
 		.card:hover{
 			border:1px solid #ee894e;
 			border-color:#ee894e;
 			color:white;
 			background-color: rgba(1,0,0,1);
+			text-decoration: none;
 		}
 		form{
-			margin-left: 1.5%;
+			margin-left: 5.05%;
 			margin-top:100px;
 		}
 		#fom{
@@ -55,7 +53,7 @@
 			border-color: #ee894e;
 		}
 		.card-body{
-			height: 5%;
+			height: 4%;
 		}
 		img{
 			height: 300px;
@@ -72,6 +70,12 @@
             footer a:hover{
                 text-decoration: none;
                 color: orange;
+            }
+            .card{
+            	border-radius: 30px;
+            }
+            #im{
+            	border-radius: 100px;
             }
 
 	</style>
@@ -110,16 +114,18 @@
 	</form>
 	
 	<% for(var i=0;i< pet.length;i++) { %>
-	  <div class="card" style="width:25rem;height: 30rem">
-	    <img src="images/<%= pet[i].name %>.jpg" class="card-img-top" alt="...">
+	  <a class="card" style="width:23rem;height: 28rem" href="<%= pet[i].animal %>/<%= pet[i].pid %>">
+	    <div id="im">
+	    	<img src="images/<%= pet[i].name %>.jpg" class="card-img-top" alt="...">
+	    </div>
 	    <div class="card-body">
 	      <h5 class="card-title"><%= pet[i].breed %></h5>
 	      <p class="card-text">Name : <%= pet[i].name %><br>Age : <%= pet[i].age %> months<br></p>
 	    </div>
-	    <div class="card-footer">
+<!-- 	    <div class="card-footer">
 	      <a href="<%= pet[i].animal %>/<%= pet[i].pid %>" class="btn btn-primary" id="fom" >Find out more</a>
-	    </div>
-	  </div>
+	    </div> -->
+	  </a>
 	  <% } %>
 </body>
 <%- include partials/footer.ejs %>
