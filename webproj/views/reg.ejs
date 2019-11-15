@@ -2,7 +2,6 @@
 <head>
   <title>Login</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -160,35 +159,15 @@
                 animation-duration: 0.8s;
                 -webkit-animation-fill-mode: forwards;
   }
-  body{
+/*  body{
     background: url("images/login.jpg") no-repeat;
     background: cover;
-  }
+  }*/
     #si{
       font-family: 'Lobster', cursive;
     }
   </style>
   <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
-  <script>
-function submitForm(oFormElement)
-{
-  // "use strict";
-  let xhr = new XMLHttpRequest();
-  xhr.open(oFormElement.method, oFormElement.getAttribute("action"));
-  xhr.send(new FormData(oFormElement));
-  xhr.onload = function(){
-      alert(xhr.statusText); 
-      if(xhr.status===403)
-      {
-            alert("Incorrect email or password");
-      }
-      else if(xhr.status===200){
-          alert("Logged in");
-      }
-      // return false;
-  };
-}
-  </script>
 </head>
 <body>
   <div class="container">
@@ -197,17 +176,30 @@ function submitForm(oFormElement)
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center" id="si">Pet.find</h5>
-            <form class="form-signin" method="POST" action="/logged" onsubmit="submitForm(this)">
+            <form class="form-signin" method="POST" action="/signedup">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address">
-                <label for="inputEmail">Email address</label>
+                <input type="text" id="name" class="form-control" name="name" placeholder="Name">
+                <label for="name">Name</label>
               </div>
               <div class="form-label-group">
-                <input type="password" name="pass" class="form-control" id="inputPassword" placeholder="Password">
-                <label for="inputPassword">Password</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                <label for="email">Email</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="signin">Sign in as User</button>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="signin">Sign in as Owner</button>
+              <div class="form-label-group">
+                <input type="text" name="phno" class="form-control" id="phno" placeholder="phno">
+                <label for="phno">Phone No.</label>
+              </div>
+              <div class="form-label-group">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                <label for="password">Password</label>
+              </div>
+              <div class="form-label-group">
+                <label for="address">Address</label>
+                <textarea type="text" name="address" class="form-control" id="address"></textarea>
+              </div>
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="signin">Sign up as User</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="signin">Sign up as Owner</button>
             </form>
           </div>
         </div>

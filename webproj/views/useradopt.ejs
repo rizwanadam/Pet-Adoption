@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Pet Info
+    </title>
+    <%- include partials/links.ejs %>
+    <style>
+    #nbar,#sub{
+        background-color: #ee894e;
+    }
+    #sub{
+        border:1px solid #ee894e;
+    }
+    #sub:hover{
+        background-color: orange;
+    }
+    .nav-link,.navbar-brand{
+        color: white;
+    }
+    #login{
+        float:right;
+    }
+    body{
+        background-size: cover;
+    }
+    form{
+        margin-left: 2%;
+        margin-top:5%;
+        position: relative;
+    }
+    #fom{
+        background:#ee894e;
+        border-color: #ee894e;
+    }
+    #pet{
+        margin-left:2%;
+        margin-top: 4%;
+    }
+    @keyframes card{
+
+    }
+    #pet:hover{
+        border-color: orange;
+    }
+    #dog{
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    #akab{
+        display: inline-block;
+        margin-top: 4%;
+        margin-right:2%;
+    }
+    .table{
+      margin-left: 20%;
+    }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<%- include partials/navbar.ejs %>
+<body>
+    <br>
+    <div class="card-group">
+        <div class="card mb-1" style="max-width:1250px;" id="pet">
+          <div class="row no-gutters">
+            <div class="col-md-8">
+                  <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">PIC</th>
+                      <th scope="col">PET TYPE</th>
+                      <th scope="col">NAME</th>
+                      <th scope="col">STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for(var i=0;i< upet.length;i++) { %>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td><img src="images/<%= upet[i].name %>.jpg" class="d-block w-100" alt="..."></td>
+                      <td><%= upet[i].animal %></td>
+                      <td><%= upet[i].name %></td>
+                      <td> Available </td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+</body>    
+</html>    

@@ -1,3 +1,20 @@
+<% if(locals.email) { %>
+<nav class="navbar navbar-expand-sm justify-content-end fixed-top" id="nbar">
+            <a class="navbar-brand" id="si" href="/">Pet.find <i class="fa fa-paw"></i></a>
+
+            <a class="nav-item nav-link" href="#">About us</a>
+            <div class="collapse navbar-collapse flex-grow-0 ml-auto mr-1" id="navbarSupportedContent">
+                <ul class="navbar-nav text-right">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/adopted"><%- email %></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+</nav>
+<% } else {%>
 <nav class="navbar navbar-expand-sm justify-content-end fixed-top" id="nbar">
             <a class="navbar-brand" id="si" href="/">Pet.find <i class="fa fa-paw"></i></a>
 
@@ -13,3 +30,4 @@
                 </ul>
             </div>
 </nav>
+<% } %>

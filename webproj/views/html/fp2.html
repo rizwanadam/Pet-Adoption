@@ -7,8 +7,36 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
         <style>
+            .slideanim {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
             #si{
       font-family: 'Lobster', cursive;
     }
@@ -37,7 +65,7 @@
                 float:right;
             }
             body {
-                background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)), url("images/main_img.jpg") no-repeat;
+                background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)), url("main_img.jpg") no-repeat;
                 background-size: cover;
             }
             a{
@@ -116,21 +144,18 @@
             .card:hover{
                 -webkit-animation:scale 0.3s forwards;
             }
-            @keyframes slide{
-                0%{
-                    translate(0px,-20px);
-                    opacity: 0;
-                }
-                100%{
-                    translate(0px,0px);
-                    opacity: 1;
-                }
-            }
             .container{
                 margin-top: 3%;    
                 margin-right: 5%;
                 margin-left: 12%;
                 -webkit-animation:fade 2s forwards;
+            }
+            #top{
+                height:700px;
+            }
+            h1{
+                margin-top: 15%;
+                font-family: 'Lobster', cursive;
             }
            </style>
            <script>
@@ -144,16 +169,48 @@
                     // $("footer").delay(1500).slideDown(2000);
                });
            </script>
+           <script>
+                 $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
 
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+           </script>
     </head>
     <body>
-<%- include partials/navbar.ejs %>
+        <nav class="navbar navbar-expand-sm justify-content-end fixed-top" id="nbar">
+            <a class="navbar-brand" href="/" id="si">Pet.find <i class="fa fa-paw"></i></a>
 
+            <a class="nav-item nav-link" href="#">About us</a>
+            <div class="collapse navbar-collapse flex-grow-0 ml-auto mr-1" id="navbarSupportedContent">
+                <ul class="navbar-nav text-right">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/signup">Sign up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="jumbotron text-center" id="top">
+          <h1>Pet.find</h1> 
+          <h5>A pet adoption website</h5> 
+          <form>
+            <div class="input-group">
+            </div>
+          </form>
+        </div>
             <div id="img"></div>
             <div class="main_text">
                 Find your purrfect match!
             </div>
-            <div class="container bg-overlay">
+            <div class="container bg-overlay slideanim">
             <div>
             <a href="/Dog" id="first">
                 <div class="card" style="width: 22rem;">
@@ -210,6 +267,86 @@
         
     </body>
     <!-- Footer -->
-<%- include partials/footer.ejs %>
+<footer class="page-footer font-small blue pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Footer Content</h5>
+        <p>Here you can use rows and columns to organize your footer content.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="/"> Pet.find</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
 </html>
       

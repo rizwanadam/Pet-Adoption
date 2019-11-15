@@ -6,11 +6,16 @@
 	</title>
 		<%- include partials/links.ejs %>
 	<style>
+				@keyframes scale{
+                100% {transform: scale(1.1);
+                }
+            }
 		.card{
 			display: inline-flex;
 			margin-left: 6.5%;
 			margin-top: 2%;
 			color: black;
+
 		}
 		#nbar,#sub{
 			background-color: #ee894e;
@@ -22,7 +27,7 @@
 			color: white;
 		}
 		body{
-			background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url("main_img.jpg") no-repeat;
+			background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));
   			background-size: cover;
 		}
 
@@ -32,6 +37,7 @@
 			color:white;
 			background-color: rgba(1,0,0,1);
 			text-decoration: none;
+			-webkit-animation:scale 0.3s forwards;
 		}
 		form{
 			margin-left: 5.05%;
@@ -56,7 +62,11 @@
 			height: 4%;
 		}
 		img{
+			z-index: 99;
 			height: 300px;
+			border-radius: 100px;
+			border-top-left-radius: 0.5em 0.1em;
+
 		}
             footer {
                 background-color:#ee894e;
@@ -75,14 +85,16 @@
             	border-radius: 30px;
             }
             #im{
-            	border-radius: 100px;
-            }
+            	border-top-left-radius: 40px 40px;            }
 
 	</style>
 	           <script>
                $(document).ready(function(){
                     $("#nbar").hide();
                     $("#nbar").slideDown(600);
+                    $("#breed").click(function(){
+                    	$(this).slideDown();
+                    });
                });
            </script>
 </head>
@@ -92,7 +104,7 @@
 <body>
 	<form action="/breed" method="POST">
 	  <div class="form-group">
-	    <select class="form-control" name="Breed">
+	    <select class="form-control" name="Breed" id="bre">
 	      <option selected>Breed</option>
 	      <% for(var i=0;i< breed.length;i++) { %>
 	      <option value="<%= breed[i].breed %>"><%= breed[i].breed %></option>

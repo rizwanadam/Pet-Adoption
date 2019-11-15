@@ -7,7 +7,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
         <style>
             #si{
       font-family: 'Lobster', cursive;
@@ -64,9 +64,8 @@
             }
             .main_text {
                 color:#db590d;
-                position:absolute;
-                top:60px;
-                left:510px;
+                margin-top:4%;
+                margin-left:35%;
                 font-size:40px;
                 font-family: 'Righteous',cursive;
                 animation: fade;
@@ -89,7 +88,7 @@
                 border-top-right-radius: 15px;
             }
             .card{
-                margin-top: 7%;
+                margin-top: 5%;
                 margin-left: 15%;
 /*                border-top-left-radius: 15px;
                 border-top-right-radius: 15px;*/
@@ -117,8 +116,18 @@
             .card:hover{
                 -webkit-animation:scale 0.3s forwards;
             }
+            @keyframes slide{
+                0%{
+                    translate(0px,-20px);
+                    opacity: 0;
+                }
+                100%{
+                    translate(0px,0px);
+                    opacity: 1;
+                }
+            }
             .container{
-                margin-top: 8%;    
+                margin-top: 3%;    
                 margin-right: 5%;
                 margin-left: 12%;
                 -webkit-animation:fade 2s forwards;
@@ -153,6 +162,7 @@
                 </ul>
             </div>
         </nav>
+
             <div id="img"></div>
             <div class="main_text">
                 Find your purrfect match!
