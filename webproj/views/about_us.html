@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<head><!DOCTYPE html>
+<head>
+    <title>Pet.find</title>
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        #si{
+  font-family: 'Lobster', cursive;
+}
+    </style>
+   <!--  <link rel="stylesheet" href="main.css"> -->
+    <style>
+        @keyframes fade{
+            0%{
+                opacity:0;
+            }
+            100%{opacity: 1;}
+        }
+        #nbar,#sub{
+            background-color: #ee894e;
+        }
+        #sub{
+            border:1px solid #ee894e;
+        }
+        .nav-link,.navbar-brand{
+            color: white;
+        }
+        nav a:hover{
+            color:#8d3708;
+        }
+        #login{
+            float:right;
+        }
+        body {
+            background:linear-gradient(rgba(0, 0, 0, 0.459), rgba(0, 0, 0, 0.459)), url("images/about_us_pic.jpg") no-repeat;
+            background-size: cover;
+        }
+        a{
+            display: inline-flex;
+        }
+        footer {
+            background-color:#ee894e;
+            background:linear-gradient(rgba(0, 0, 0, 0.9), rgba(0,0,0,0.9));
+            margin-top:4%;
+            color: #838383;
+        }
+        footer a{
+            color: #838383;
+        }
+        footer a:hover{
+            text-decoration: none;
+            color: orange;
+        }
+        @keyframes fade{
+            0%{
+                opacity:0;
+            }
+            100%{opacity: 1;}
+        }
+        .main_text {
+            color:#db590d;
+            margin-top:4%;
+            margin-left:35%;
+            font-size:40px;
+            font-family: 'Righteous',cursive;
+            animation: fade;
+            animation-duration: 1.2s;
+            -webkit-animation-fill-mode: forwards;
+        }
+/*            .bg-overlay {
+            background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("main_img.jpg") ;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            color: #fff;
+            height: 450px;
+            padding-top: 50px;
+        }*/
+        img{
+            width:90px;
+            height:180px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card{
+            margin-top: 5%;
+            margin-left: 15%;
+/*                border-top-left-radius: 15px;
+            border-top-right-radius: 15px;*/
+        }
+        .card-body{
+            background-color:#ee894e; 
+        }
+        .card-body h5{
+            color:white;
+            text-align: center;
+        }
+        @keyframes scale{
+            100% {transform: scale(1.1);
+            }
+        }
+        div a:hover{
+            text-decoration: none;
+        }
+        a:hover .card-body:hover{
+            background-color:#db590d;
+            color: white;
+            text-decoration: none;
+        }
+        .card:hover{
+            -webkit-animation:scale 0.3s forwards;
+        }
+        @keyframes slide{
+            0%{
+                translate(0px,-20px);
+                opacity: 0;
+            }
+            100%{
+                translate(0px,0px);
+                opacity: 1;
+            }
+        }
+        .container{
+            margin-top: 3%;    
+            margin-right: 5%;
+            margin-left: 12%;
+            -webkit-animation:fade 2s forwards;
+        }
+       </style>
+       <script>
+           $(document).ready(function(){
+                $("#nbar").hide();
+                // $("footer").hide();
+                $("#nbar").slideDown(600);
+                // $("div a").hide();
+                // $("div a").each(function(index){
+                //     $(this).delay(index*100).slideDown(1000);});
+                // $("footer").delay(1500).slideDown(2000);
+           });
+       </script>
+
+</head>
+<body>
+<%- include partials/navbar.ejs %>
+
+        <div id="img"></div>
+        <div class="main_text">
+            ABOUT US
+        </div>
+        <div class="container bg-overlay" style="color:rgb(255, 190, 116);font-size:30px;text-align:justify;">
+        Pet adoption is the process of taking responsibility for a pet that a previous owner has abandoned or released to a shelter or rescue organization. Common sources for adoptable pets are animal shelters and rescue groups.<br>
+        <br>The Pet.find portal supports the shelters and rescue groups that post their adoptable pets on Pet.find. Our aim is to prevent the euthanasia of adoptable pets and to provide a safe, loving and caring home for them.
+        <br><br>Pet.find can be accessed by people from anywhere across the country. The pet lovers can register themselves on the platform to search and adopt a pet. The user also has an option to view different pictures of the pet, know the temperament of the pet and even ask queries. It is a very user interactive portal. 
+        <br><br><span style="text-align: center;">Well, what are you waiting for? Give a pet a loving home using Pet.find!</span>
+    </div>
+    
+</body>
+<!-- Footer -->
+<%- include partials/footer.ejs %>
+</html>
